@@ -1,0 +1,424 @@
+﻿[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "Burned",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "parentTokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "Cloned",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint16",
+        "name": "templateId",
+        "type": "uint16"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "Minted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "burnCoin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "cloneCoin",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getClonePrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCoinImmunity",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "templateId",
+        "type": "uint16"
+      }
+    ],
+    "name": "getMintPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "coinsStorage",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "erc20",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "erc721",
+        "type": "address"
+      }
+    ],
+    "name": "init",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "isLocked",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "isOwner",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "templateId",
+        "type": "uint16"
+      }
+    ],
+    "name": "mintCoin",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "newDescription",
+        "type": "string"
+      }
+    ],
+    "name": "setDescription",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "mintEnabled",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "burnEnabled",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint16",
+        "name": "mintLimitStart",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint16",
+        "name": "mintLimitEnd",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint256",
+        "name": "coinImmunityInDays",
+        "type": "uint256"
+      }
+    ],
+    "name": "setMintBurnSettings",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "mintParentGradePenalty",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint8",
+        "name": "mintChildGradePenalty",
+        "type": "uint8"
+      }
+    ],
+    "name": "setMintPenalties",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "newName",
+        "type": "string"
+      }
+    ],
+    "name": "setName",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "namingPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "descriptionPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "minterBonus",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "burnReward",
+        "type": "uint256"
+      }
+    ],
+    "name": "setPrices",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

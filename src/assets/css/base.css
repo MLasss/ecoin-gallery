@@ -1,0 +1,20 @@
+body{
+    background-image: url('../images/bg.png');
+    background-color: #202020 !important;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    -webkit-animation: backgroundScroll 60s linear 1;
+    animation: backgroundScroll 60s linear 1;
+    animation-iteration-count: infinite;    
+}
+
+.footer{
+    z-index: 10;
+    border-color:  rgb(255, 255, 255);
+    box-shadow: 0 0px 3px 0 rgba(255, 255, 255, 0.95), 0 0px 20px 20px rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+    z-index: 10 !important;
+    border-color:  rgba(255, 255, 255, 0.596);
+    box-shadow: 0 0px 6px 0 rgba(255, 255, 255, 0.95), 0 0px 20px 20px rgba(0, 0, 0, 0.5);
+}
