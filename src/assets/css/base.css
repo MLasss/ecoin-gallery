@@ -1,7 +1,7 @@
 body{
     background-image: url('../images/bg.png');
     background-color: #202020 !important;
-    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    font-family: 'Segoe UI', 'Book Antiqua', Palatino, serif !important;
     -webkit-animation: backgroundScroll 60s linear 1;
     animation: backgroundScroll 60s linear 1;
     animation-iteration-count: infinite;    
