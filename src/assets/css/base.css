@@ -7,6 +7,11 @@ body{
     animation-iteration-count: infinite;    
 }
 
+@keyframes backgroundScroll {
+    from {background-position: 0 0;}
+    to {background-position: -256px 0px;}
+}
+
 .footer{
     z-index: 10;
     border-color:  rgb(255, 255, 255);
