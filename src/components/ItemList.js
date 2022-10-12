@@ -3,7 +3,7 @@ import Pagination from 'react-bootstrap/Pagination';
 
 import Item from "./Item";
 
-function ItemList( {tokens, totalCount, accountConnected} ) {
+function ItemList( {tokens, totalCount, accountConnected, loaded} ) {
   const [ pagedTokens, setPagedTokens] = useState([]);
   const [ paginationItem, setPaginationItems ] = useState(null);
 
@@ -55,11 +55,16 @@ function ItemList( {tokens, totalCount, accountConnected} ) {
           ) : (
             <></>
         )}
-        {accountConnected != null && tokens.length === 0 ? (
-          <div>You have no items in your gallery.</div>
+        {accountConnected != null && tokens.length === 0 && !loaded? (
+          <div>Loading...</div>
           ) : (
             <></>
         )}
+        {accountConnected != null && tokens.length === 0 && loaded? (
+          <div>You have no items in your gallery.</div>
+          ) : (
+            <></>
+        )}        
             
       </div>
     </>
