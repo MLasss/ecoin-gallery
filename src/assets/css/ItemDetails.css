@@ -55,6 +55,7 @@
 .img-fluid
 {
     width: 100% !important;
+    aspect-ratio: 1 / 1;
 }
 
 .nav-link{
@@ -64,7 +65,6 @@
 .lazy-load-image-background
 {
     aspect-ratio: 1 / 1;
-    margin: 40%;
 }
 
 .lazy-load-image-loaded

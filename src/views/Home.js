@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import alchemyClient from "../lib/alchemyClient";
 import ItemList from "../components/ItemList";
+import Alert from 'react-bootstrap/Alert'
 import "../assets/css/Home.css";
 
 
 function Home( { accountConnected} ) {
-
   const [ ownedTokens, setOwnedTokens ] = useState([]);
+  const [ showMessage, setShowMessage ] = useState(true);
   const [ totalCount, setTotalCount ] = useState(0);
   const [ loaded, setLoaded ] = useState(false);
   
@@ -39,6 +40,9 @@ function Home( { accountConnected} ) {
         <div className="col-md-12">
           <div className="card">
             <div className="card-body">
+              <Alert variant="secondary" show={showMessage} onClose={() => setShowMessage(false)} dismissible>
+                In some extreme cases IPFS may be very slow, it may take time for NFT images to load.
+              </Alert> 
               <ItemList tokens={ownedTokens} totalCount={totalCount} accountConnected={accountConnected} loaded={loaded}/>
             </div>
           </div>

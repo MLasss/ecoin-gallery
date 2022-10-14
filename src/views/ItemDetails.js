@@ -21,6 +21,7 @@ function ItemDetails( { accountConnected } ) {
   const { id } = useParams();
   const [ showMessage, setShowMessage ] = useState(false);
   const [ headerMessage, setHeaderMessage ] = useState(null);
+  const [ showRefreshLink, setShowRefreshLink ] = useState(true);
   const [ metadata, setMetadata ] = useState(null);
   const [ coinFullDetail, setCoinFullDetail] = useState(null);
   const [ coinDetail, setCoinDetail] = useState(null);
@@ -145,7 +146,7 @@ function ItemDetails( { accountConnected } ) {
       setNameChangeActionBtnText("Changing...");
       setName(id, tokenName).then(val => {
         if (val === "1"){
-          displayMessage("Coin name was changed successfully! Click 'Refresh Metadata' if changes are  not reflected on 'My Gallery'. Refresh Metadata on Opensea gallery to see changes on Opensea.");
+          displayMessageRefresh("Coin name was changed successfully! Click 'Refresh Metadata' if changes are  not reflected on 'My Gallery'. Refresh Metadata on Opensea gallery to see changes on Opensea.");
           setNameChangeModalVisibiltiy(false);
           loadCoinMetadata();
         }else{
@@ -212,7 +213,7 @@ function ItemDetails( { accountConnected } ) {
       setDescriptionChangeActionBtnText("Changing...");
       setDescription(id, tokenDescription).then(val => {
         if (val === "1"){
-          displayMessage("Coin description was changed successfully! Click 'Refresh Metadata' if changes are  not reflected on 'My Gallery'. Refresh Metadata on Opensea gallery to see changes on Opensea.");
+          displayMessageRefresh("Coin description was changed successfully! Click 'Refresh Metadata' if changes are  not reflected on 'My Gallery'. Refresh Metadata on Opensea gallery to see changes on Opensea.");
           setDescriptionChangeModalVisibiltiy(false);
           loadCoinMetadata();
         } else {
@@ -276,7 +277,7 @@ function ItemDetails( { accountConnected } ) {
     setCloneCoinActionBtnText("Cloning...");
     cloneCoin(id).then(val => {
       if (val === "1"){
-        displayMessage("The Coin was cloned successfully and shortly will arrive in your wallet! Click 'Refresh Metadata' if changes are  not reflected on 'My Gallery'. Refresh Metadata on Opensea gallery to see changes on Opensea.");
+        displayMessageRefresh("The Coin was cloned successfully and shortly will arrive in your wallet! Click 'Refresh Metadata' if changes are  not reflected on 'My Gallery'. Refresh Metadata on Opensea gallery to see changes on Opensea.");
         setCloneCoinModalVisibiltiy(false);
         loadCoinMetadata();
         getCoinFull(id).then(data => setCoinFullDetail(data));
@@ -319,7 +320,7 @@ function ItemDetails( { accountConnected } ) {
         burnCoin(id).then(val => {
           if (val === "1"){
             setBurnCoinModalVisibility(false);
-            displayMessage("Coin was burned Successfully!");
+            displayMessageRefresh("Coin was burned Successfully! Refresh Metadata on Opensea gallery to see changes on Opensea.");
           } else {
             setInputErrors(extractMessage(val?.message));
             setBurnActionBtnText("Burn Coin");
@@ -334,6 +335,11 @@ function ItemDetails( { accountConnected } ) {
     });
   }
 
+  function refreshScreenData() {
+    loadCoinMetadata();
+    getCoinFull(id).then(data => setCoinFullDetail(data));
+  }  
+
   function refreshMetadata() {
     alchemyClient.nft.getNftMetadata(process.env.REACT_APP_ERC721_TOKEN_ADDRESS, id).then(nft => {
       if (Math.floor((Date.now() - new Date(nft.timeLastUpdated))/60000) < 15 ) {
@@ -344,9 +350,16 @@ function ItemDetails( { accountConnected } ) {
   }
 
   function displayMessage(message){
+    setShowRefreshLink(false);
     setHeaderMessage(message);
     setShowMessage(true);  
   }
+
+  function displayMessageRefresh(message){
+    setShowRefreshLink(true);
+    setHeaderMessage(message);
+    setShowMessage(true);  
+  }   
 
   function extractMessage(message) {
     if (message == null) return "Failed to execute transaction.";
@@ -373,6 +386,11 @@ function ItemDetails( { accountConnected } ) {
               <Alert variant="secondary" show={showMessage} onClose={() => setShowMessage(false)} dismissible>
                 <p className="mb-0">
                     {headerMessage}
+                    {
+                      showRefreshLink ?
+                      <><br/>You may need to wait few sec. and click <button type="button" className="btn btn-link pt-0 px-0" onClick={refreshScreenData}>Refresh Screen</button> to see updated data on the screen.</>
+                        : <></>
+                    }                     
                 </p>
               </Alert> 
             </div>
@@ -402,7 +420,13 @@ function ItemDetails( { accountConnected } ) {
                   >
                     <Tab eventKey="coin" title="Coin">
                       <div className="mb-3 card item-card" style={{backgroundColor: "#"+metadata?.background_color}}>
-                        <LazyLoadImage placeholderSrc={LoadingImage} src={metadata?.image} className="img-fluid" alt="" />
+                        <LazyLoadImage placeholderSrc={LoadingImage} src={metadata?.image} className="img-fluid" alt="" 
+                          onError={({ currentTarget }) => {
+                            displayMessage("It's taking longer to load image from IPFS, please be patient.");
+                            currentTarget.src=LoadingImage;
+                            setTimeout(function() { currentTarget.src=metadata?.image; }, 500);
+                          }} 
+                        />
                       </div>
                       {
                         !locked && owned && coinDetail != null? (
@@ -422,7 +446,12 @@ function ItemDetails( { accountConnected } ) {
                       !locked && owned && coinDetail != null? (
                         <Tab eventKey="emoji" title="Emoji">
                         <div className="mb-3 card sharp-image item-card">
-                          <LazyLoadImage placeholderSrc={LoadingImage} src={process.env.REACT_APP_IPFS_GATEWAY + process.env.REACT_APP_FACE_CID + '/' + coinDetail?.coinTemplate + '.png'} className="img-fluid" alt=""/>
+                          <LazyLoadImage placeholderSrc={LoadingImage} src={process.env.REACT_APP_IPFS_GATEWAY + process.env.REACT_APP_FACE_CID + '/' + coinDetail?.coinTemplate + '.png'} className="img-fluid" alt=""
+                            onError={({ currentTarget }) => {
+                              currentTarget.src=LoadingImage;
+                              setTimeout(function() { currentTarget.src=process.env.REACT_APP_IPFS_GATEWAY + process.env.REACT_APP_FACE_CID + '/' + coinDetail?.coinTemplate + '.png'; }, 500);
+                            }} 
+                          />
                         </div>
                         <a href={process.env.REACT_APP_IPFS_GATEWAY + process.env.REACT_APP_FACE_CID + '/' + coinDetail?.coinTemplate + '.png'} target="_blank" rel="noopener noreferrer" download>
                           <button type="button" className="btn btn-primary action-btn px-4 mx-2">
