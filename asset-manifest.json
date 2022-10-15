@@ -3,13 +3,13 @@
     "static/js/0.bd58f441.chunk.js": "/ecoin-gallery/static/js/0.bd58f441.chunk.js",
     "static/js/0.bd58f441.chunk.js.map": "/ecoin-gallery/static/js/0.bd58f441.chunk.js.map",
     "main.css": "/ecoin-gallery/static/css/main.27bd542f.chunk.css",
-    "main.js": "/ecoin-gallery/static/js/main.077ce7ff.chunk.js",
-    "main.js.map": "/ecoin-gallery/static/js/main.077ce7ff.chunk.js.map",
+    "main.js": "/ecoin-gallery/static/js/main.918af231.chunk.js",
+    "main.js.map": "/ecoin-gallery/static/js/main.918af231.chunk.js.map",
     "runtime-main.js": "/ecoin-gallery/static/js/runtime-main.d9fff5a1.js",
     "runtime-main.js.map": "/ecoin-gallery/static/js/runtime-main.d9fff5a1.js.map",
     "static/css/3.984f751f.chunk.css": "/ecoin-gallery/static/css/3.984f751f.chunk.css",
-    "static/js/3.fa8fbd86.chunk.js": "/ecoin-gallery/static/js/3.fa8fbd86.chunk.js",
-    "static/js/3.fa8fbd86.chunk.js.map": "/ecoin-gallery/static/js/3.fa8fbd86.chunk.js.map",
+    "static/js/3.9249a862.chunk.js": "/ecoin-gallery/static/js/3.9249a862.chunk.js",
+    "static/js/3.9249a862.chunk.js.map": "/ecoin-gallery/static/js/3.9249a862.chunk.js.map",
     "static/js/4.814e22dc.chunk.js": "/ecoin-gallery/static/js/4.814e22dc.chunk.js",
     "static/js/4.814e22dc.chunk.js.map": "/ecoin-gallery/static/js/4.814e22dc.chunk.js.map",
     "static/js/5.82899b98.chunk.js": "/ecoin-gallery/static/js/5.82899b98.chunk.js",
@@ -17,7 +17,7 @@
     "index.html": "/ecoin-gallery/index.html",
     "static/css/3.984f751f.chunk.css.map": "/ecoin-gallery/static/css/3.984f751f.chunk.css.map",
     "static/css/main.27bd542f.chunk.css.map": "/ecoin-gallery/static/css/main.27bd542f.chunk.css.map",
-    "static/js/3.fa8fbd86.chunk.js.LICENSE.txt": "/ecoin-gallery/static/js/3.fa8fbd86.chunk.js.LICENSE.txt",
+    "static/js/3.9249a862.chunk.js.LICENSE.txt": "/ecoin-gallery/static/js/3.9249a862.chunk.js.LICENSE.txt",
     "static/media/base.css": "/ecoin-gallery/static/media/bg.d7aa0881.png",
     "static/media/loading.gif": "/ecoin-gallery/static/media/loading.429b2865.gif",
     "static/media/pencil-square.svg": "/ecoin-gallery/static/media/pencil-square.75d078b5.svg"
@@ -25,8 +25,8 @@
   "entrypoints": [
     "static/js/runtime-main.d9fff5a1.js",
     "static/css/3.984f751f.chunk.css",
-    "static/js/3.fa8fbd86.chunk.js",
+    "static/js/3.9249a862.chunk.js",
     "static/css/main.27bd542f.chunk.css",
-    "static/js/main.077ce7ff.chunk.js"
+    "static/js/main.918af231.chunk.js"
   ]
 }
