@@ -40,7 +40,7 @@ function Home( { accountConnected} ) {
         <div className="col-md-12">
           <div className="card">
             <div className="card-body">
-              <Alert variant="secondary" show={showMessage} onClose={() => setShowMessage(false)} dismissible>
+              <Alert variant="secondary" show={showMessage && totalCount > 0} onClose={() => setShowMessage(false)} dismissible>
                 In some extreme cases IPFS may be very slow, it may take time for NFT images to load.
               </Alert> 
               <ItemList tokens={ownedTokens} totalCount={totalCount} accountConnected={accountConnected} loaded={loaded}/>

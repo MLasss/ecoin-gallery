@@ -2,12 +2,11 @@ import { ethers } from "ethers";
 import abi from "../contracts/userAccess.json";
 import alchemyClient from "./alchemyClient";
 
-const polygonProvider = new ethers.providers.Web3Provider(window.ethereum);
-const signer = polygonProvider.getSigner();
-const contract = new ethers.Contract(process.env.REACT_APP_USERACCESS_ADDRESS, abi, signer)
-
 export async function setName(tokenId, newName){
     try {
+        const polygonProvider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = polygonProvider.getSigner();
+        const contract = new ethers.Contract(process.env.REACT_APP_USERACCESS_ADDRESS, abi, signer)
         const data = await contract.setName(tokenId, newName);
         await polygonProvider.waitForTransaction(data.hash);
         await alchemyClient.nft.refreshNftMetadata(process.env.REACT_APP_ERC721_TOKEN_ADDRESS, tokenId);
@@ -20,6 +19,9 @@ export async function setName(tokenId, newName){
 
 export async function setDescription(tokenId, newDescription){
     try {
+        const polygonProvider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = polygonProvider.getSigner();
+        const contract = new ethers.Contract(process.env.REACT_APP_USERACCESS_ADDRESS, abi, signer)
         const data = await contract.setDescription(tokenId, newDescription);
         await polygonProvider.waitForTransaction(data.hash);
         await alchemyClient.nft.refreshNftMetadata(process.env.REACT_APP_ERC721_TOKEN_ADDRESS, tokenId);
@@ -32,6 +34,9 @@ export async function setDescription(tokenId, newDescription){
 
 export async function burnCoin(tokenId){
     try {
+        const polygonProvider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = polygonProvider.getSigner();
+        const contract = new ethers.Contract(process.env.REACT_APP_USERACCESS_ADDRESS, abi, signer)
         const data = await contract.burnCoin(tokenId);
         await polygonProvider.waitForTransaction(data.hash);
         await alchemyClient.nft.refreshNftMetadata(process.env.REACT_APP_ERC721_TOKEN_ADDRESS, tokenId);
@@ -43,12 +48,17 @@ export async function burnCoin(tokenId){
 }
 
 export async function getClonePrice(id){
+    const polygonProvider = new ethers.providers.Web3Provider(window.ethereum);
+    const contract = new ethers.Contract(process.env.REACT_APP_USERACCESS_ADDRESS, abi, polygonProvider)
     const data = await contract.getClonePrice(id);
     return data;
 }
 
 export async function cloneCoin(tokenId){
     try {
+        const polygonProvider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = polygonProvider.getSigner();
+        const contract = new ethers.Contract(process.env.REACT_APP_USERACCESS_ADDRESS, abi, signer)
         const data = await contract.cloneCoin(tokenId);
         await polygonProvider.waitForTransaction(data.hash);
         //await alchemyClient.nft.refreshNftMetadata(process.env.REACT_APP_ERC721_TOKEN_ADDRESS, tokenId);
