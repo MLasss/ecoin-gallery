@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import alchemyClient from "../lib/alchemyClient";
 import ItemList from "../components/ItemList";
 import Alert from 'react-bootstrap/Alert'
+import RandomSentence from '../components/RandomSentence';
 import "../assets/css/Home.css";
 
 
@@ -41,7 +42,7 @@ function Home( { accountConnected} ) {
           <div className="card">
             <div className="card-body">
               <Alert variant="secondary" show={showMessage && totalCount > 0} onClose={() => setShowMessage(false)} dismissible>
-                In some extreme cases IPFS may be very slow, it may take time for NFT images to load.
+                <RandomSentence jsonFileName="tips" className="mb-0" delay={30000}/>
               </Alert> 
               <ItemList tokens={ownedTokens} totalCount={totalCount} accountConnected={accountConnected} loaded={loaded}/>
             </div>

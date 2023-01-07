@@ -1,0 +1,15 @@
+[
+    "<strong>Note:</strong> In some cases, IPFS may be slow and it may take some time for the NFT images to load.",
+	"<strong>Tip:</strong> If the details displayed on the coins list are incorrect, you can refresh the metadata by selecting the coin in question and clicking the 'Refresh Metadata' button on the coin's details page.",
+    "<strong>Tip:</strong> If you've made changes to your NFT on OpenSea and they're not showing up, try clicking the 'Refresh Metadata' button on the OpenSea platform.",
+    "<strong>Note:</strong> Blockchain transactions can sometimes take a while to be processed, especially during times of high traffic. Be patient and wait for your transaction to be completed.",
+    "<strong>Note:</strong> The EmojiCoins Gallery dapp only displays coins that are currently in your wallet.",    
+    "<strong>Note:</strong> Most coins with a grade above MS60 can be cloned by their owner. The cost of cloning a coin is equal to twice its nominal value, and this cost doubles with each additional clone that is created.",    
+    "<strong>Note:</strong> Cloning a coin reduces the grade of both the original coin and the clone by 2 points each time a clone is made.",    
+    "<strong>Note:</strong> Burning a coin is a permanent action, which means the coin will be lost forever and can no longer be minted or cloned. Proceed with caution.",    
+    "<strong>Note:</strong> There is a one-month 'cool-down' period after a coin is created, during which it cannot be burned.",    
+    "<strong>Tip:</strong> You can burn a coin to receive 90% of its nominal value in EMOJI tokens. This can be a good option if you no longer have a use for the coin and want to receive some value back.",
+    "<strong>Note:</strong> It costs 0.5 times the coin's nominal value to change the name (maximum 32 alpha-numeric characters). Make sure the new name is worth the cost.",
+    "<strong>Note:</strong> It costs 1 times the coin's nominal value to change the description (maximum 256 alpha-numeric characters). Choose your words wisely.",
+    "<strong>Note:</strong> Updating the name or description of a coin does not affect any clones of the coin, which will retain their original name and description."    
+]

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingImage from "../assets/images/loading.gif";
+import MetadataErrorImage from "../assets/images/metadata-error.png";
 import "../assets/css/Item.css";
 
 function Item( {token} ) {
@@ -13,6 +14,12 @@ function Item( {token} ) {
       let meta = token.rawMetadata;
       if (meta?.image){
         meta.image = meta.image.replace("ipfs://", process.env.REACT_APP_IPFS_GATEWAY);
+      }
+      else 
+      {
+        meta.image = MetadataErrorImage;
+        meta.name = 'Metadata Error';
+        meta.background_color = 'ffffff';
       }
       setTimeout(function() { setMetdata(meta) }, 200);
     }

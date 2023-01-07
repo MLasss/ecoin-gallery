@@ -101,7 +101,7 @@ function ItemDetails( { accountConnected } ) {
   // Change Name Modal -----------------------------------------------------------------
 
   function handleTokenNameInput(val){
-    setTokenName(val.replace(/[^[ A-Za-z0-9_@/#+$!\d*]/ig, ""))
+    setTokenName(val.replace(/[^[ A-Za-z0-9_@/#+$!\d*+,-./!]/ig, ""))
   }
 
   function nameChangeModalShow(){
@@ -146,7 +146,7 @@ function ItemDetails( { accountConnected } ) {
       setNameChangeActionBtnText("Changing...");
       setName(id, tokenName).then(val => {
         if (val === "1"){
-          displayMessageRefresh("Coin name was changed successfully! Click 'Refresh Metadata' if changes are  not reflected on 'My Gallery'. Refresh Metadata on Opensea gallery to see changes on Opensea.");
+          displayMessageRefresh("The coin name has been successfully changed! If the changes are not reflected in 'My Gallery,' be sure to click 'Refresh Metadata'. You can also refresh the metadata on the Opensea gallery to view the changes on Opensea.");
           setNameChangeModalVisibiltiy(false);
           loadCoinMetadata();
         }else{
@@ -168,7 +168,7 @@ function ItemDetails( { accountConnected } ) {
   // Change Description Modal -----------------------------------------------------------------
 
   function handleTokenDescriptionInput(val){
-    setTokenDescription(val.replace(/[^[ A-Za-z0-9_@/#+$!\d*]/ig, ""))
+    setTokenDescription(val.replace(/[^[ A-Za-z0-9_@/#+$!\d*+,-./!]/ig, ""))
   }
 
   function descriptionChangeModalShow(){
@@ -213,7 +213,7 @@ function ItemDetails( { accountConnected } ) {
       setDescriptionChangeActionBtnText("Changing...");
       setDescription(id, tokenDescription).then(val => {
         if (val === "1"){
-          displayMessageRefresh("Coin description was changed successfully! Click 'Refresh Metadata' if changes are  not reflected on 'My Gallery'. Refresh Metadata on Opensea gallery to see changes on Opensea.");
+          displayMessageRefresh("The coin description has been successfully changed! If the changes are not reflected in 'My Gallery,' be sure to click 'Refresh Metadata'. You can also refresh the metadata on the Opensea gallery to view the changes on Opensea.");
           setDescriptionChangeModalVisibiltiy(false);
           loadCoinMetadata();
         } else {
@@ -277,7 +277,7 @@ function ItemDetails( { accountConnected } ) {
     setCloneCoinActionBtnText("Cloning...");
     cloneCoin(id).then(val => {
       if (val === "1"){
-        displayMessageRefresh("The Coin was cloned successfully and shortly will arrive in your wallet! Click 'Refresh Metadata' if changes are  not reflected on 'My Gallery'. Refresh Metadata on Opensea gallery to see changes on Opensea.");
+        displayMessageRefresh("The Coin was cloned successfully and will shortly appear in your wallet! Remember to click 'Refresh Metadata' if the changes are not reflected on 'My Gallery'. Don't forget to also refresh the metadata on Opensea's gallery to see the updates on their platform as well.");
         setCloneCoinModalVisibiltiy(false);
         loadCoinMetadata();
         getCoinFull(id).then(data => setCoinFullDetail(data));
@@ -320,7 +320,7 @@ function ItemDetails( { accountConnected } ) {
         burnCoin(id).then(val => {
           if (val === "1"){
             setBurnCoinModalVisibility(false);
-            displayMessageRefresh("Coin was burned Successfully! Refresh Metadata on Opensea gallery to see changes on Opensea.");
+            displayMessageRefresh("The Coin has been burned successfully. Make sure to refresh the metadata on the Opensea gallery to see the updates on Opensea.");
           } else {
             setInputErrors(extractMessage(val?.message));
             setBurnActionBtnText("Burn Coin");
@@ -570,7 +570,7 @@ function ItemDetails( { accountConnected } ) {
             <Modal.Title>Change Coin Name</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <span>{'You must burn ' + emojiCount + ' Emojis to change Coin name.'}</span>
+            <span>{'Burn ' + emojiCount + ' EMOJIS to change Coin name (32 symbols max).'}</span>
             <input maxLength={31} type="text" className="form-control" value={tokenName} onChange={(e) => handleTokenNameInput(e.currentTarget.value)} placeholder="New Name"/>
             <span className="text-danger">{inputErrors}</span>
           </Modal.Body>
@@ -590,7 +590,7 @@ function ItemDetails( { accountConnected } ) {
             <Modal.Title>Change Coin Description</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <span>{'You must burn ' + emojiCount + ' Emojis to change Coin description.'}</span>
+            <span>{'Burn ' + emojiCount + ' EMOJIS to change Coin description (256 symbols max).'}</span>
             <textarea maxLength={255} cols={40} rows={3} className="form-control" value={tokenDescription} onChange={(e) => handleTokenDescriptionInput(e.currentTarget.value)} placeholder="New Description"/>
             <span className="text-danger">{inputErrors}</span>
           </Modal.Body>
