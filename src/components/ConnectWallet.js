@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { providers } from "ethers";
 import Web3Modal from 'web3modal'
+import { useNavigate } from "react-router-dom";
 import { getOwnedEmojis } from "../lib/erc20";
 import { getOwnedTokens } from "../lib/erc721";
 import Toast from 'react-bootstrap/Toast';
@@ -11,31 +12,37 @@ function ConnectWallet({ onAccountConnect }) {
     const [emojis, setEmojis] = useState(0);
     const [emojiTokens, setEmojiTokens] = useState(null);
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-    
-        const newWeb3Modal = new Web3Modal({
-          cacheProvider: true, 
-          network: "mainnet",
-        });
-    
-        setWeb3Modal(newWeb3Modal)
+      const newWeb3Modal = new Web3Modal({
+        cacheProvider: true, 
+        network: "mainnet",
+      });
+      setWeb3Modal(newWeb3Modal)
     }, [])
 
     useEffect(() => {
-        if(web3Modal && web3Modal.cachedProvider){
-          connectWallet()
-        }
+      if(web3Modal && web3Modal.cachedProvider){
+        connectWallet()
+      }
     }, [web3Modal])
 
     async function connectWallet() {
       const provider = await web3Modal.connect();
-      addListeners(provider);
-      const ethersProvider = new providers.Web3Provider(provider)
-      ethersProvider.getSigner().getAddress().then(userAddress => {
-        setAddress(userAddress)
-        onAccountConnect(userAddress);
-      });
+      const networkId = await provider.chainId;
+      if (networkId === "0x89") { // 0x89 is the network id of polygon 
+        addListeners(provider);
+        const ethersProvider = new providers.Web3Provider(provider)
+        ethersProvider.getSigner().getAddress().then(userAddress => {
+          setAddress(userAddress)
+          onAccountConnect(userAddress);
+        });
+      } else {
+        disconnectWallet();
+        console.error("Metamask wallet is not connected to Polygon blockchain.");
+        navigate('/');
+      }
     }
 
     async function disconnectWallet(){
